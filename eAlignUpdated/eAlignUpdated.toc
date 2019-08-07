@@ -1,0 +1,6 @@
+## Interface: 80200
+## Author: Lohkin
+## Version: 8.2.0
+## Title: eAlign|cffffffffUpdated |r
+## Notes: A simple alignment grid.  Use |cffffd700/align|r to toggle on and off.
+eAlignUpdated.lua
