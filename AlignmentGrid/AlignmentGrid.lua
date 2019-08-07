@@ -1,11 +1,11 @@
-local frame = CreateFrame('Frame', nil, UIParent)
+frame = CreateFrame('Frame', nil, UIParent)
 frame:SetAllPoints(UIParent)
 
-local numberOfVerticalLines = 64
-local numberOfHorizontalLines = 36
+numberOfVerticalLines = 64
+numberOfHorizontalLines = 36
 
-local width = GetScreenWidth() / numberOfVerticalLines
-local height = GetScreenHeight() / numberOfHorizontalLines
+width = GetScreenWidth() / numberOfVerticalLines
+height = GetScreenHeight() / numberOfHorizontalLines
 
 	local line = frame:CreateTexture(nil, 'BACKGROUND')
 for i = 0, numberOfVerticalLines do
