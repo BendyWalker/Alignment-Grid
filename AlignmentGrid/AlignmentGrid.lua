@@ -1,12 +1,15 @@
 local frame = CreateFrame('Frame', nil, UIParent)
 frame:SetAllPoints(UIParent)
 
-local width = GetScreenWidth() / 64
-local height = GetScreenHeight() / 36
+local numberOfVerticalLines = 64
+local numberOfHorizontalLines = 36
 
-for i = 0, 64 do
+local width = GetScreenWidth() / numberOfVerticalLines
+local height = GetScreenHeight() / numberOfHorizontalLines
+
 	local line = frame:CreateTexture(nil, 'BACKGROUND')
-	if i == 32 then
+for i = 0, numberOfVerticalLines do
+	if i == (numberOfVerticalLines / 2) then
 		line:SetColorTexture(1, 1, 0, 0.5)
 	else
 		line:SetColorTexture(1, 1, 1, 0.15)
@@ -15,9 +18,9 @@ for i = 0, 64 do
 	line:SetPoint('BOTTOMRIGHT', frame, 'BOTTOMLEFT', i * width + 1, 0)
 end
 
-for i = 0, 36 do
+for i = 0, numberOfHorizontalLines do
 	local line = frame:CreateTexture(nil, 'BACKGROUND')
-	if i == 18 then
+	if i == (numberOfHorizontalLines / 2) then
 		line:SetColorTexture(1, 1, 0, 0.5)
 	else
 		line:SetColorTexture(1, 1, 1, 0.15)
