@@ -1,8 +1,10 @@
 frame = CreateFrame('Frame', nil, UIParent)
 frame:SetAllPoints(UIParent)
 
-numberOfVerticalLines = 64
-numberOfHorizontalLines = 36
+scale = 4
+
+numberOfVerticalLines = 16 * scale
+numberOfHorizontalLines = 9 * scale
 
 width = GetScreenWidth() / numberOfVerticalLines
 height = GetScreenHeight() / numberOfHorizontalLines
