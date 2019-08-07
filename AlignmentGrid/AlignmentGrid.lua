@@ -7,34 +7,24 @@ numberOfHorizontalLines = 36
 width = GetScreenWidth() / numberOfVerticalLines
 height = GetScreenHeight() / numberOfHorizontalLines
 
-for i = 1, (numberOfVerticalLines - 1) do
-	local line = frame:CreateLine()
-	line:SetThickness(1)
+function CreateLines(numberOfLines, startPoint, endPoint, offsetX, offsetY)
+	for index = 1, (numberOfLines - 1) do
+		local line = frame:CreateLine()
+		line:SetThickness(1)
 
-	-- Sets the color of the line based on if it is in the center of the screen
-	if i == (numberOfVerticalLines / 2) then
-		line:SetColorTexture(1, 1, 0, 0.5)
-	else
-		line:SetColorTexture(1, 1, 1, 0.25)
+		-- Sets the color of the line based on if it is in the center of the screen
+		if index == (numberOfLines / 2) then
+			line:SetColorTexture(1, 1, 0, 0.5)
+		else
+			line:SetColorTexture(1, 1, 1, 0.25)
+		end
+
+		line:SetStartPoint(startPoint, (index * offsetX), (index * offsetY))
+		line:SetEndPoint(endPoint, (index * offsetX), (index * offsetY))
 	end
-
-	line:SetStartPoint('TOPLEFT', i * width, 0)
-	line:SetEndPoint('BOTTOMLEFT', i * width, 0)
 end
 
-for i = 1, (numberOfHorizontalLines - 1) do
-	local line = frame:CreateLine()
-	line:SetThickness(1)
-
-	-- Sets the color of the line based on if it is in the center of the screen
-	if i == (numberOfHorizontalLines / 2) then
-		line:SetColorTexture(1, 1, 0, 0.5)
-	else
-		line:SetColorTexture(1, 1, 1, 0.25)
-	end
-
-	line:SetStartPoint('BOTTOMLEFT', 0, i * height)
-	line:SetEndPoint('BOTTOMRIGHT', 0, i * height)
-end
+CreateLines(numberOfVerticalLines, 'TOPLEFT', 'BOTTOMLEFT', width, 0)
+CreateLines(numberOfHorizontalLines, 'BOTTOMLEFT', 'BOTTOMRIGHT', 0, height)
 
 frame:Show()
