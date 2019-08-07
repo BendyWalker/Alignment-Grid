@@ -12,8 +12,9 @@ function CreateLines(numberOfLines, startPoint, endPoint, offsetX, offsetY)
 		local line = frame:CreateLine()
 		line:SetThickness(1)
 
-		-- Sets the color of the line based on if it is in the center of the screen
-		if index == (numberOfLines / 2) then
+		if index == (numberOfLines * 0.5) then
+			line:SetColorTexture(1, 1, 0, 0.75)
+		elseif ((index == (numberOfLines * 0.25)) or (index == (numberOfLines * 0.75))) then
 			line:SetColorTexture(1, 1, 0, 0.5)
 		else
 			line:SetColorTexture(1, 1, 1, 0.25)
