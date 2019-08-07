@@ -7,7 +7,7 @@ numberOfHorizontalLines = 36
 width = GetScreenWidth() / numberOfVerticalLines
 height = GetScreenHeight() / numberOfHorizontalLines
 
-for i = 0, numberOfVerticalLines do
+for i = 1, (numberOfVerticalLines - 1) do
 	local line = frame:CreateLine()
 	if i == (numberOfVerticalLines / 2) then
 		line:SetColorTexture(1, 1, 0, 0.5)
@@ -18,7 +18,7 @@ for i = 0, numberOfVerticalLines do
 	line:SetEndPoint('BOTTOMLEFT', i * width, 0)
 end
 
-for i = 0, numberOfHorizontalLines do
+for i = 1, (numberOfHorizontalLines - 1) do
 	local line = frame:CreateLine()
 	if i == (numberOfHorizontalLines / 2) then
 		line:SetColorTexture(1, 1, 0, 0.5)
