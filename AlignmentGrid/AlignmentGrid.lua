@@ -18,21 +18,25 @@ end
 
 frame = nil
 
-scale = 4
-
-numberOfVerticalLines = 16 * scale
-numberOfHorizontalLines = 9 * scale
-
-width = GetScreenWidth() / numberOfVerticalLines
-height = GetScreenHeight() / numberOfHorizontalLines
-
 function HandleSlashCommand(message)
 	if frame then
 		frame:Hide()
 		frame = nil
 	else
+		if tonumber(message) == nil then
+			scale = 4
+		else
+			scale = message
+		end
+
 		frame = CreateFrame('Frame', nil, UIParent)
 		frame:SetAllPoints(UIParent)
+
+		numberOfVerticalLines = 16 * scale
+		numberOfHorizontalLines = 9 * scale
+		width = GetScreenWidth() / numberOfVerticalLines
+		height = GetScreenHeight() / numberOfHorizontalLines
+
 		CreateLines(numberOfVerticalLines, "TOPLEFT", "BOTTOMLEFT", width, 0)
 		CreateLines(numberOfHorizontalLines, "BOTTOMLEFT", "BOTTOMRIGHT", 0, height)
 	end
