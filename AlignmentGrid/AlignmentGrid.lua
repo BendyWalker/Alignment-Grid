@@ -49,4 +49,6 @@ function HandleSlashCommand(scale)
 end
 
 SLASH_ALIGNMENTGRID1 = "/align"
+SLASH_ALIGNMENTGRID2 = "/aligngrid"
+SLASH_ALIGNMENTGRID3 = "/alignmentgrid"
 SlashCmdList["ALIGNMENTGRID"] = HandleSlashCommand
