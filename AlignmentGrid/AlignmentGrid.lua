@@ -1,6 +1,9 @@
-function CreateLines(numberOfLines, startPoint, endPoint, offsetX, offsetY)
+-- Draws a number of repeating white lines from start point to end point at
+-- offset intervals onto parent frame. Highlights lines at  1/4, 1/2 and 3/4
+-- intervals in yellow.
+function CreateLines(parentFrame, numberOfLines, startPoint, endPoint, offsetX, offsetY)
 	for index = 1, (numberOfLines - 1) do
-		local line = frame:CreateLine()
+		local line = parentFrame:CreateLine()
 		line:SetThickness(1)
 
 		if index == (numberOfLines * 0.5) then
@@ -16,6 +19,7 @@ function CreateLines(numberOfLines, startPoint, endPoint, offsetX, offsetY)
 	end
 end
 
+-- The frame on which to render the grid.
 frame = nil
 
 function HandleSlashCommand(message)
@@ -37,8 +41,8 @@ function HandleSlashCommand(message)
 		width = GetScreenWidth() / numberOfVerticalLines
 		height = GetScreenHeight() / numberOfHorizontalLines
 
-		CreateLines(numberOfVerticalLines, "TOPLEFT", "BOTTOMLEFT", width, 0)
-		CreateLines(numberOfHorizontalLines, "BOTTOMLEFT", "BOTTOMRIGHT", 0, height)
+		CreateLines(frame, numberOfVerticalLines, "TOPLEFT", "BOTTOMLEFT", width, 0)
+		CreateLines(frame, numberOfHorizontalLines, "BOTTOMLEFT", "BOTTOMRIGHT", 0, height)
 	end
 end
 
