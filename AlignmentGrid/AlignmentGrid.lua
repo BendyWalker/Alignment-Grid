@@ -1,14 +1,3 @@
-frame = CreateFrame('Frame', nil, UIParent)
-frame:SetAllPoints(UIParent)
-
-scale = 4
-
-numberOfVerticalLines = 16 * scale
-numberOfHorizontalLines = 9 * scale
-
-width = GetScreenWidth() / numberOfVerticalLines
-height = GetScreenHeight() / numberOfHorizontalLines
-
 function CreateLines(numberOfLines, startPoint, endPoint, offsetX, offsetY)
 	for index = 1, (numberOfLines - 1) do
 		local line = frame:CreateLine()
@@ -27,7 +16,21 @@ function CreateLines(numberOfLines, startPoint, endPoint, offsetX, offsetY)
 	end
 end
 
-CreateLines(numberOfVerticalLines, 'TOPLEFT', 'BOTTOMLEFT', width, 0)
-CreateLines(numberOfHorizontalLines, 'BOTTOMLEFT', 'BOTTOMRIGHT', 0, height)
+frame = CreateFrame('Frame', nil, UIParent)
+frame:SetAllPoints(UIParent)
 
-frame:Show()
+scale = 4
+
+numberOfVerticalLines = 16 * scale
+numberOfHorizontalLines = 9 * scale
+
+width = GetScreenWidth() / numberOfVerticalLines
+height = GetScreenHeight() / numberOfHorizontalLines
+
+function HandleSlashCommand(message)
+	CreateLines(numberOfVerticalLines, "TOPLEFT", "BOTTOMLEFT", width, 0)
+	CreateLines(numberOfHorizontalLines, "BOTTOMLEFT", "BOTTOMRIGHT", 0, height)
+end
+
+SLASH_ALIGNMENTGRID1 = "/align"
+SlashCmdList["ALIGNMENTGRID"] = HandleSlashCommand
