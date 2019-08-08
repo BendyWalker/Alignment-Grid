@@ -19,30 +19,32 @@ function CreateLines(parentFrame, numberOfLines, startPoint, endPoint, offsetX, 
 	end
 end
 
+-- Draws a square grid of a given scale onto parent frame.
+function CreateGrid(parentFrame, scale)
+	numberOfVerticalLines = 16 * scale
+	numberOfHorizontalLines = 9 * scale
+	width = GetScreenWidth() / numberOfVerticalLines
+	height = GetScreenHeight() / numberOfHorizontalLines
+	CreateLines(frame, numberOfVerticalLines, "TOPLEFT", "BOTTOMLEFT", width, 0)
+	CreateLines(frame, numberOfHorizontalLines, "BOTTOMLEFT", "BOTTOMRIGHT", 0, height)
+end
+
 -- The frame on which to render the grid.
 frame = nil
 
-function HandleSlashCommand(message)
+function HandleSlashCommand(scale)
 	if frame then
 		frame:Hide()
 		frame = nil
 	else
-		if tonumber(message) == nil then
-			scale = 4
-		else
-			scale = message
-		end
-
 		frame = CreateFrame('Frame', nil, UIParent)
 		frame:SetAllPoints(UIParent)
 
-		numberOfVerticalLines = 16 * scale
-		numberOfHorizontalLines = 9 * scale
-		width = GetScreenWidth() / numberOfVerticalLines
-		height = GetScreenHeight() / numberOfHorizontalLines
-
-		CreateLines(frame, numberOfVerticalLines, "TOPLEFT", "BOTTOMLEFT", width, 0)
-		CreateLines(frame, numberOfHorizontalLines, "BOTTOMLEFT", "BOTTOMRIGHT", 0, height)
+		if tonumber(scale) == nil then
+			CreateGrid(frame, 4)
+		else
+			CreateGrid(frame, scale)
+		end
 	end
 end
 
