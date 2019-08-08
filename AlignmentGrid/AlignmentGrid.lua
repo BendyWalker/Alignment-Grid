@@ -29,10 +29,11 @@ function CreateGrid(parentFrame, scale)
 	CreateLines(frame, numberOfHorizontalLines, "BOTTOMLEFT", "BOTTOMRIGHT", 0, height)
 end
 
+
 -- The frame on which to render the grid.
 frame = nil
 
-function HandleSlashCommand(scale)
+function HandleSlashCommand(message)
 	if frame then
 		frame:Hide()
 		frame = nil
@@ -40,11 +41,17 @@ function HandleSlashCommand(scale)
 		frame = CreateFrame('Frame', nil, UIParent)
 		frame:SetAllPoints(UIParent)
 
-		if tonumber(scale) == nil then
-			CreateGrid(frame, 4)
+		if message == "large" then
+			scale = 2
+		elseif message == "small" then
+			scale = 8
+		elseif message == "tiny" then
+			scale = 16
 		else
-			CreateGrid(frame, scale)
+			scale = 4
 		end
+
+		CreateGrid(frame, scale)
 	end
 end
 
