@@ -5,4 +5,4 @@ To install, download the project and copy the **AlignmentGrid** folder into **[W
 
 Once installed, type `/align` while in-game to turn the grid on and off. If you prefer a larger or smaller grid, append either `large`, `small` or `tiny`. For example, `/align small`.
 
-Only 16:9 aspect ratio displays are officially supported.
+*Only 16:9 aspect ratio displays are officially supported.*
