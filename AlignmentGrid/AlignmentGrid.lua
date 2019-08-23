@@ -19,6 +19,7 @@ function DetermineAspectRatio(value)
 	return value, Round(relativeValue)
 end
 
+
 -- Draws a number of repeating white lines from start point to end point at
 -- offset intervals onto parent frame. Highlights lines at  1/4, 1/2 and 3/4
 -- intervals in yellow.
@@ -47,8 +48,8 @@ function CreateGrid(parentFrame, scale)
 	local verticalOffset = screenWidth / numberOfVerticalLines
 	local horizontalOffset = screenHeight / numberOfHorizontalLines
 
-	CreateLines(frame, numberOfVerticalLines, "TOPLEFT", "BOTTOMLEFT", verticalOffset, 0)
-	CreateLines(frame, numberOfHorizontalLines, "BOTTOMLEFT", "BOTTOMRIGHT", 0, horizontalOffset)
+	CreateLines(parentFrame, numberOfVerticalLines, "TOPLEFT", "BOTTOMLEFT", verticalOffset, 0)
+	CreateLines(parentFrame, numberOfHorizontalLines, "BOTTOMLEFT", "BOTTOMRIGHT", 0, horizontalOffset)
 end
 
 
