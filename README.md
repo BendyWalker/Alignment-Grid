@@ -1,4 +1,6 @@
 # Alignment Grid
+![Grid displayed after typing /align](screenshots/standard.jpg)
+
 A simple World of Warcraft AddOn that overlays a grid on-screen to aid in aligning the user interface.
 
 To install, download the project and copy the **AlignmentGrid** folder into **[World of Warcraft Install Location] > Interface > AddOns**.
