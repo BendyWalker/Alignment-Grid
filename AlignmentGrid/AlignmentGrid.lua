@@ -42,10 +42,7 @@ end
 
 -- Draws a square grid of a given scale onto parent frame.
 function CreateGrid(parentFrame, scale)
-	local verticalBase, horizontalBase = DetermineAspectRatio(16)
-	local numberOfVerticalLines = verticalBase * scale
-	local numberOfHorizontalLines = horizontalBase * scale
-
+	local numberOfVerticalLines, numberOfHorizontalLines = DetermineAspectRatio(scale)
 	local screenWidth, screenHeight = GetScreenSize()
 	local verticalOffset = screenWidth / numberOfVerticalLines
 	local horizontalOffset = screenHeight / numberOfHorizontalLines
@@ -66,14 +63,13 @@ function HandleSlashCommand(message)
 		frame = CreateFrame('Frame', nil, UIParent)
 		frame:SetAllPoints(UIParent)
 
+		local scale = 64
 		if message == "large" then
-			scale = 2
+			scale = 36
 		elseif message == "small" then
-			scale = 8
+			scale = 100
 		elseif message == "tiny" then
-			scale = 16
-		else
-			scale = 4
+			scale = 128
 		end
 
 		CreateGrid(frame, scale)
