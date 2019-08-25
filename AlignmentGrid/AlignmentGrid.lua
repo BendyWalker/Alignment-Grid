@@ -1,10 +1,3 @@
--- Rounds a value to given level of precision.
-function Round(value, precision)
-	local precision = precision or 1
-	local integral, fractional = math.modf(math.floor(value / precision + 0.5)) * precision
-	return integral
-end
-
 -- Returns a tuple representing the current screen size.
 function GetScreenSize()
 	return GetScreenWidth(), GetScreenHeight()
@@ -15,8 +8,8 @@ end
 -- in 16 will return 9, whereas on a 4:3 screen it will return 12.
 function DetermineAspectRatio(value)
 	local screenWidth, screenHeight = GetScreenSize()
-	local relativeValue = Round(screenHeight / screenWidth * value, 0.01)
-	return value, Round(relativeValue)
+	local relativeValue = Round(screenHeight / screenWidth * value)
+	return value, relativeValue
 end
 
 
