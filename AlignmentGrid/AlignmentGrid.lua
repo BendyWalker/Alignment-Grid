@@ -69,8 +69,6 @@ SlashCmdList["ALIGNMENTGRID"] = function(message)
 			scale = 36
 		elseif message == "small" then
 			scale = 100
-		elseif message == "tiny" then
-			scale = 128
 		end
 
 		CreateGrid(gridFrame, scale)
