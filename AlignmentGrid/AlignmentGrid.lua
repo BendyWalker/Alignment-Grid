@@ -1,12 +1,12 @@
 -- Returns a tuple representing the current screen size.
-function GetScreenSize()
+local function GetScreenSize()
 	return GetScreenWidth(), GetScreenHeight()
 end
 
 -- Returns a tuple representing the aspect ratio of a given value, taking into
 -- consideration the current screen size. For example, on a 16:9 screen passing
 -- in 16 will return 9, whereas on a 4:3 screen it will return 12.
-function DetermineAspectRatio(value)
+local function DetermineAspectRatio(value)
 	local screenWidth, screenHeight = GetScreenSize()
 	local relativeValue = Round(screenHeight / screenWidth * value)
 	return value, relativeValue
@@ -16,7 +16,7 @@ end
 -- Draws a number of repeating white lines from start point to end point at
 -- offset intervals onto parent frame. Highlights lines at  1/4, 1/2 and 3/4
 -- intervals in yellow.
-function CreateLines(parentFrame, numberOfLines, startPoint, endPoint, offsetX, offsetY)
+local function CreateLines(parentFrame, numberOfLines, startPoint, endPoint, offsetX, offsetY)
 	for index = 1, (numberOfLines - 1) do
 		local line = parentFrame:CreateLine()
 		line:SetThickness(1)
@@ -35,7 +35,7 @@ function CreateLines(parentFrame, numberOfLines, startPoint, endPoint, offsetX, 
 end
 
 -- Draws a square grid of a given scale onto parent frame.
-function CreateGrid(parentFrame, scale)
+local function CreateGrid(parentFrame, scale)
 	local numberOfVerticalLines, numberOfHorizontalLines = DetermineAspectRatio(scale)
 	local screenWidth, screenHeight = GetScreenSize()
 	local verticalOffset = screenWidth / numberOfVerticalLines
@@ -47,15 +47,15 @@ end
 
 
 -- The frame on which to render the grid.
-frame = nil
+local gridFrame = nil
 
-function HandleSlashCommand(message)
-	if frame then
-		frame:Hide()
-		frame = nil
+local function HandleSlashCommand(message)
+	if gridFrame then
+		gridFrame:Hide()
+		gridFrame = nil
 	else
-		frame = CreateFrame('Frame', nil, UIParent)
-		frame:SetAllPoints(UIParent)
+		gridFrame = CreateFrame("Frame", nil, UIParent)
+		gridFrame:SetAllPoints(UIParent)
 
 		local scale = 64
 		if message == "large" then
@@ -66,7 +66,7 @@ function HandleSlashCommand(message)
 			scale = 128
 		end
 
-		CreateGrid(frame, scale)
+		CreateGrid(gridFrame, scale)
 	end
 end
 
