@@ -1,3 +1,5 @@
+-- FUNCTIONS
+
 -- Returns a tuple representing the current screen size.
 local function GetScreenSize()
 	return GetScreenWidth(), GetScreenHeight()
@@ -46,10 +48,15 @@ local function CreateGrid(parentFrame, scale)
 end
 
 
+-- ADDON
+
 -- The frame on which to render the grid.
 local gridFrame = nil
 
-local function HandleSlashCommand(message)
+SLASH_ALIGNMENTGRID1 = "/align"
+SLASH_ALIGNMENTGRID2 = "/aligngrid"
+SLASH_ALIGNMENTGRID3 = "/alignmentgrid"
+SlashCmdList["ALIGNMENTGRID"] = function(message)
 	if gridFrame then
 		gridFrame:Hide()
 		gridFrame = nil
@@ -69,8 +76,3 @@ local function HandleSlashCommand(message)
 		CreateGrid(gridFrame, scale)
 	end
 end
-
-SLASH_ALIGNMENTGRID1 = "/align"
-SLASH_ALIGNMENTGRID2 = "/aligngrid"
-SLASH_ALIGNMENTGRID3 = "/alignmentgrid"
-SlashCmdList["ALIGNMENTGRID"] = HandleSlashCommand
